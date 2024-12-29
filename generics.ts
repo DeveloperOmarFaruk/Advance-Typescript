@@ -58,3 +58,34 @@ const useResponse: ApiResponse<User> = {
     },
     message: "Hello I am Mr. Omar Faruk",
 }
+
+// Generic Function
+function getArray<T>(items: T[]): T[]{
+    return [...items];
+}
+
+// Using the Generic Function with Different Types
+const numberArray = getArray<number>([1, 4, 6]);
+const stringArray = getArray<string>(["Apple", "Banana", "Orange"]);
+const bolleanArray = getArray<boolean>([true, false, true]);
+
+// Adding new items to the returned arrays
+numberArray.push(4);
+stringArray.push("date");
+bolleanArray.push(false);
+
+
+console.log(numberArray);
+console.log(stringArray);
+console.log(bolleanArray);
+
+// Generic Multiple Function
+function mergeObjects<T, U>(obj1: T, obj2: U): T & U{
+    return { ...obj1, ...obj2 };
+}
+
+const person = { name: "John", age: 30 };
+const job = { title: "Developer", company: "TechCrop" };
+
+const employee = mergeObjects(person, job);
+console.log(employee);
