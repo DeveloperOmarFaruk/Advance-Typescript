@@ -1,4 +1,6 @@
+// ========================
 // Generic Type
+// ========================
 // type GenericsArray<param> = Array<param>;
 type GenericsArray<T> = Array<T>;
 
@@ -24,15 +26,19 @@ const user:GenericsArray<{name:string, age: number}> = [
     }
 ]
 
-
+// ========================
 // Generic Tuple
+// ========================
 type GenericsTuple<X,Y> = [X, Y]
 
 const couple: GenericsTuple<string, string> = ["Mr. Husband", "Ms. Wife"];
 
 const userDetails: GenericsTuple<number, { name: string, age: number }> = [124567, { name: "Abdur Rahim", age: 45 }]
 
+
+// ========================
 // Generic Interface
+// ========================
 
 interface ApiResponse<T>{
     status: string;
@@ -59,7 +65,10 @@ const useResponse: ApiResponse<User> = {
     message: "Hello I am Mr. Omar Faruk",
 }
 
+
+// ========================
 // Generic Function
+// ========================
 function getArray<T>(items: T[]): T[]{
     return [...items];
 }
@@ -79,7 +88,9 @@ console.log(numberArray);
 console.log(stringArray);
 console.log(bolleanArray);
 
+// ========================
 // Generic Multiple Function
+// ========================
 function mergeObjects<T, U>(obj1: T, obj2: U): T & U{
     return { ...obj1, ...obj2 };
 }
@@ -89,3 +100,33 @@ const job = { title: "Developer", company: "TechCrop" };
 
 const employee = mergeObjects(person, job);
 console.log(employee);
+
+// ========================
+// Constraints in Generics
+// ========================
+
+interface HasId {
+    id: number;
+}
+
+function getItemById<T extends HasId>(items: T[], id: number): T | undefined{
+    return items.find(item => item.id === id);
+}
+
+const products = [
+    {
+        id: 1,
+        name: "Laptop"
+    },
+    {
+        id: 2,
+        name: "Phone"
+    },
+    {
+        id: 3,
+        name: "Tablet"
+    }
+]
+
+const result = getItemById(products, 2);
+console.log(result);

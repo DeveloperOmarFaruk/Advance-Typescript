@@ -27,7 +27,9 @@ const useResponse = {
     },
     message: "Hello I am Mr. Omar Faruk",
 };
+// ========================
 // Generic Function
+// ========================
 function getArray(items) {
     return [...items];
 }
@@ -42,7 +44,9 @@ bolleanArray.push(false);
 console.log(numberArray);
 console.log(stringArray);
 console.log(bolleanArray);
+// ========================
 // Generic Multiple Function
+// ========================
 function mergeObjects(obj1, obj2) {
     return Object.assign(Object.assign({}, obj1), obj2);
 }
@@ -50,3 +54,22 @@ const person = { name: "John", age: 30 };
 const job = { title: "Developer", company: "TechCrop" };
 const employee = mergeObjects(person, job);
 console.log(employee);
+function getItemById(items, id) {
+    return items.find(item => item.id === id);
+}
+const products = [
+    {
+        id: 1,
+        name: "Laptop"
+    },
+    {
+        id: 2,
+        name: "Phone"
+    },
+    {
+        id: 3,
+        name: "Tablet"
+    }
+];
+const result = getItemById(products, 2);
+console.log(result);
