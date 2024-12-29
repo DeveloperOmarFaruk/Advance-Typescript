@@ -1,4 +1,4 @@
-// Generics Type
+// Generic Type
 // type GenericsArray<param> = Array<param>;
 type GenericsArray<T> = Array<T>;
 
@@ -25,9 +25,36 @@ const user:GenericsArray<{name:string, age: number}> = [
 ]
 
 
-// Generics Tuple
+// Generic Tuple
 type GenericsTuple<X,Y> = [X, Y]
 
 const couple: GenericsTuple<string, string> = ["Mr. Husband", "Ms. Wife"];
 
-const userDetails: GenericsTuple<number,{name:string, age:number}> = [124567, {name: "Abdur Rahim", age: 45}]
+const userDetails: GenericsTuple<number, { name: string, age: number }> = [124567, { name: "Abdur Rahim", age: 45 }]
+
+// Generic Interface
+
+interface ApiResponse<T>{
+    status: string;
+    data: T;
+    message?: string;
+}
+
+
+interface User{
+    id: string;
+    name: string;
+    email: string;
+    age: number;
+}
+
+const useResponse: ApiResponse<User> = {
+    status: "Success",
+    data: {
+        id: "181-15-2094",
+        name: "Omar Faruk",
+        email: "omar@gmail.com",
+        age: 25
+    },
+    message: "Hello I am Mr. Omar Faruk",
+}
