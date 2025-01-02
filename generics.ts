@@ -1,4 +1,5 @@
-// ========================
+{
+    // ========================
 // Generic Type
 // ========================
 // type GenericsArray<param> = Array<param>;
@@ -130,3 +131,25 @@ const products = [
 
 const result = getItemById(products, 2);
 console.log(result);
+
+
+// ==============================
+// Constraint with keyof Operator
+// ==============================
+
+function getProperty<T, K extends keyof T>(obj: T, key: K): T[K]{
+    return obj[key];
+}
+
+const personDetails = {
+    name: "Alice",
+    age: 30,
+    job: "Enginer"
+}
+
+const personName = getProperty(personDetails, "name");
+const personAge = getProperty(personDetails, "age");
+
+console.log(personName);
+    console.log(personAge);
+}
